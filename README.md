@@ -1,19 +1,14 @@
 # lucid
 The λucid typesetting system.
 
-## Composition
-Composition is the fundamental construct in λucid (aka "lucid").  Rendered images are represented as transforms ColorPlane -> ColorPlane.  To obtain an actual render, apply this transform to the all black, zero alpha infinite plane.
+## Based on TeX
+This way we aren't reinventing the wheel.  We get mathematical typesetting for free, etc.
 
-## Fundamental Composition Operators
-- atop -> place an image on top of another
-- under -> place an image under another
-- xor -> xor two images\
-- add
-- sub
-- mul
-- div -> add/subtract/multiply/divide the images
-- mask -> zero out an image outside the support of another
+## Has a Linker
+This is a big one.  It allows you to use multiple files to create documents, and to reuse files in multiple documents easily.  Each document can be self contained and complete. (ie will compile on its own to a document).
 
-## Concepts
-- support f = supp f: closure of set of f such that f /= id
-- bound f: smallest bounding box containing supp f
+### Format of Input Files
+The format of input files consists of a header called the preamble where all definitions and declarations are made.  Then comes the body where the actual text to be typeset lives.  All of the global styling information lives in the preamble.  This makes it possible to merge two preambles when compiling a multi-file project, and to rationally override the parent documents' style, or defer to them.  Styling can be held in a separate file as well, and included in the same way.  A style file is just a file with an empty body.
+
+## Has Namespacing
+Identifiers live in packages which act as namespaces.
