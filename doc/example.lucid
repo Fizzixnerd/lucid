@@ -1,0 +1,52 @@
+# comments look like this.  
+
+# Everything is a function.  These are functions of zero variables.
+title -> {My Title}
+author -> {J. Doe}
+
+# This fetches the left margin width for the page.
+leftMarginWidth <- page.leftMarginWidth
+
+# This then creates a local function with the same name that shadows
+# the original only -- in this document and its children.
+page.leftMarginWidth -> %{leftMarginWidth - 1.0cm}
+
+# macros with arguments definitions look like this:
+myMacro arg1 arg2 -> %{add arg1 arg2}
+
+# and are called like so:
+fivecm -> %{myMacro 3.0cm 2.0cm}
+
+# %{ ... } is an "interpreted block".  { ... } is an "uninterpreted
+# block".  So, to call a two argument macro named "boo" where the
+# first argument is the contents of the variable "ola" and the second
+# argument is the literal string "Oh hai there", we would do:
+#
+# %{boo ola {Oh hai there}}
+#
+# These nest, so if "hai" was a variable, we could also do
+# %{boo ola {Oh %hai there}}
+
+# Here we define the titlepage.
+article.titlePage title author -> {
+  @center
+  %title
+
+  %author
+}
+
+# @article is to be thought of as a function that takes a single named
+# argument: @body.  However, the %with macro modifies @article so that
+# its style now includes information for an abstract.  It also makes
+# it take an additional named arguement called @abstract.
+
+%{with content.@abstract @article}
+
+@abstract {
+  This is the abstract.  It is indented and that's okay. blah blah
+  blah lorem ipsum.
+}
+
+@body
+This is some body text.  We don't call %{verb |%titlePage|} explicitly
+because that's a styling concern.%{footnote {This is a footnote!}}
