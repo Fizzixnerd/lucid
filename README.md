@@ -12,3 +12,4 @@ The format of input files consists of a header called the preamble where all def
 
 ## Has Namespacing
 Identifiers live in packages which act as namespaces.
+
