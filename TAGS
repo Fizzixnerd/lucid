@@ -1,0 +1,123 @@
+
+./src/Text/Lucid/Syntax.hs,2357
+module Text.Lucid.Syntax Text.Lucid.Syntax0,1
+data LToken LToken11,12
+data LToken = PercentSignPercentSign11,12
+            | AtSignAtSign12,13
+            | LBraceLBrace13,14
+            | RBraceRBrace14,15
+            | LBracketLBracket15,16
+            | RBracketRBracket16,17
+            | BSlashBSlash17,18
+            | DollarSignDollarSign18,19
+            | TextT TextT19,20
+type Row Row22,23
+type Col Col23,24
+newtype LucidTokenStream LucidTokenStream25,26
+newtype LucidTokenStream = LucidTokenStream LucidTokenStream25,26
+newtype LucidTokenStream = LucidTokenStream { unLucidTokenStream unLucidTokenStream25,26
+instance instance28,29
+data DebugInfo DebugInfo56,57
+data DebugInfo = DebugInfo DebugInfo56,57
+data DebugInfo = DebugInfo { _diStart _diStart56,57
+                           , _diEnd _diEnd57,58
+data DebugToken DebugToken61,62
+data DebugToken d = DebugToken DebugToken61,62
+data DebugToken d = DebugToken { _dtInfo _dtInfo61,62
+                               , _dtToken _dtToken62,63
+type DToken DToken66,67
+data LExp LExp68,69
+data LExp = LGroup LGroup68,69
+          | LList LList69,70
+          | LCall LCall70,71
+          | LID LID71,72
+          | LEnv LEnv72,73
+          | LText LText73,74
+          | LMDef LMDef74,75
+          | LVGet LVGet75,76
+data Call Call78,79
+data Call = Call Call78,79
+data Call = Call { _callMacro _callMacro78,79
+                 , _callArgs _callArgs79,80
+data ID ID83,84
+data ID = ID ID83,84
+data ID = ID { _idQualifiers _idQualifiers83,84
+             , _idName _idName84,85
+data MDef MDef88,89
+data MDef = MDef MDef88,89
+data MDef = MDef { _mdefName _mdefName88,89
+                 , _mdefArgs _mdefArgs89,90
+                 , _mdefBody _mdefBody90,91
+data VGet VGet94,95
+data VGet = VGet VGet94,95
+data VGet = VGet { _vgetTarget _vgetTarget94,95
+                 , _vgetSource _vgetSource95,96
+newtype IDQualifier IDQualifier99,100
+newtype IDQualifier = IDQualifier IDQualifier99,100
+newtype IDQualifier = IDQualifier { unIDQualifier unIDQualifier99,100
+newtype IDName IDName102,103
+newtype IDName = IDName IDName102,103
+newtype IDName = IDName { unIDName unIDName102,103
+newtype AtID AtID105,106
+newtype AtID = AtID AtID105,106
+newtype AtID = AtID { unAtID unAtID105,106
+
+./src/Text/Lucid/Parse.hs,224
+module Text.Lucid.Parse Text.Lucid.Parse0,1
+type LucidParser LucidParser13,14
+satisfy satisfy15,16
+satisfy satisfy16,17
+tokenP tokenP23,24
+tokenP tokenP24,25
+anyTokenP anyTokenP26,27
+anyTokenP anyTokenP27,28
+
+./src/Text/Lucid/Lex.hs,1064
+module Text.Lucid.Lex Text.Lucid.Lex0,1
+reservedPunctuation reservedPunctuation16,17
+reservedPunctuation reservedPunctuation17,18
+reservedPunctuationL reservedPunctuationL26,27
+reservedPunctuationL reservedPunctuationL27,28
+reservedPunctuationS reservedPunctuationS29,30
+reservedPunctuationS reservedPunctuationS30,31
+mkDTokenP mkDTokenP32,33
+mkDTokenP mkDTokenP33,34
+puncT puncT40,41
+puncT puncT41,42
+textT textT45,46
+textT textT46,47
+dToken dToken50,51
+dToken dToken51,52
+dTokens dTokens56,57
+dTokens dTokens57,58
+lineCommentChar lineCommentChar59,60
+lineCommentChar lineCommentChar60,61
+blockCommentOpenString blockCommentOpenString62,63
+blockCommentOpenString blockCommentOpenString63,64
+blockCommentCloseString blockCommentCloseString65,66
+blockCommentCloseString blockCommentCloseString66,67
+lineComment lineComment68,69
+lineComment lineComment69,70
+blockComment blockComment71,72
+blockComment blockComment72,73
+spaces spaces74,75
+spaces spaces75,76
+megaMain megaMain77,78
+megaMain megaMain78,79
+
+./src/Lib.hs,65
+module LibLib0,1
+someFunc someFunc6,7
+someFunc someFunc7,8
+
+./app/Main.hs,52
+module Main Main0,1
+main main4,5
+main main5,6
+
+./Setup.hs,15
+main main1,2
+
+./test/Spec.hs,30
+main main0,1
+main main1,2

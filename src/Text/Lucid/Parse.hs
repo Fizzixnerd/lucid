@@ -1,0 +1,28 @@
+module Text.Lucid.Parse where
+
+import ClassyPrelude
+
+import Text.Megaparsec
+
+import qualified Data.Set as S
+import qualified Data.List.NonEmpty as NE
+import Data.Void
+
+import Text.Lucid.Syntax
+import Text.Lucid.Lex
+
+type LucidParser = Parsec (ErrorFancy Void) LucidTokenStream
+
+satisfy :: (MonadParsec e s m, Token s ~ DToken) => (LToken -> Bool) -> m LToken
+satisfy f = token testChar Nothing
+  where
+    testChar (y@DebugToken { _dtToken = x}) =
+      if f x
+        then Right x
+        else Left (pure (Tokens (y NE.:| [])), S.empty)
+
+tokenP :: LToken -> LucidParser LToken
+tokenP t = satisfy (== t) <?> (show t)
+
+anyTokenP :: LucidParser LToken
+anyTokenP = satisfy (const True) <?> "Any token"

@@ -1,0 +1,8 @@
+flags: {}
+extra-package-dbs: []
+packages:
+- .
+extra-deps:
+- lucid-0.1.0.0
+- megaparsec-6.2.0
+resolver: lts-9.14

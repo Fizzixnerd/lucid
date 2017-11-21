@@ -1,0 +1,69 @@
+module Text.Lucid.Syntax where
+
+import ClassyPrelude
+import Control.Lens
+
+data LToken = PercentSign
+            | AtSign
+            | LBrace
+            | RBrace
+            | LBracket
+            | RBracket
+            | BSlash
+            | TextT Text
+  deriving (Eq, Ord, Show)
+
+data DebugInfo
+
+data DebugToken d = DebugToken { _dtInfo :: d
+                               , _dtToken :: LToken
+                               }
+  deriving (Eq, Ord, Show)
+
+type DToken = DebugToken DebugInfo
+
+data LExp = LGroup (Vector LExp)
+          | LList (Vector LExp)
+          | LCall Call
+          | LID     ID
+          | LEnv  AtID
+          | LText Text
+          | LMDef MDef
+          | LVGet VGet
+  deriving (Eq, Ord, Show)
+
+data Call = Call { _callMacro :: LExp
+                 , _callArgs  :: Vector LExp
+                 }
+  deriving (Eq, Ord, Show)
+
+data ID = ID { _idQualifiers :: Vector IDQualifier
+             , _idName :: IDName
+             }
+  deriving (Eq, Ord, Show)
+
+data MDef = MDef { _mdefName :: ID
+                 , _mdefArgs :: Vector ID
+                 , _mdefBody :: LExp
+                 }
+  deriving (Eq, Ord, Show)
+
+data VGet = VGet { _vgetTarget :: ID
+                 , _vgetSource :: LExp
+                 }
+  deriving (Eq, Ord, Show)
+
+newtype IDQualifier = IDQualifier { unIDQualifier :: Text }
+  deriving (Eq, Ord, Show)
+
+newtype IDName = IDName { unIDName :: Text }
+  deriving (Eq, Ord, Show)
+
+newtype AtID = AtID { unAtID :: ID }
+  deriving (Eq, Ord, Show)
+
+makeLenses ''ID
+makeLenses ''DebugToken
+makeLenses ''Call
+makeLenses ''MDef
+makeLenses ''VGet

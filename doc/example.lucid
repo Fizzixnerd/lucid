@@ -50,3 +50,24 @@ article.titlePage title author -> {
 @body
 This is some body text.  We don't call %{verb |%titlePage|} explicitly
 because that's a styling concern.%{footnote {This is a footnote!}}
+
+######################################################################
+
+# another doc
+
+hello -> True
+
+%{with book.@tableOfContents @book}
+
+%{
+if hello then {
+     @chapter {
+       OHAI
+     }
+  }
+else {
+     @chapter {
+       KBAI
+     }
+  }
+}
